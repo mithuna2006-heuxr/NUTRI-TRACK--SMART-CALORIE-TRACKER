@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriTrack — Smart Calorie Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="NutriTrack home">
+        <span class="brand-mark">✳</span><span>nutri<span class="brand-light">track</span></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="nav">
+        <a class="nav-link active" href="#dashboard"><span>▦</span> Dashboard</a>
+        <a class="nav-link" href="#food-log"><span>♧</span> Food diary</a>
+        <a class="nav-link" href="#nutrition"><span>◉</span> Nutrition</a>
+        <a class="nav-link" href="#calculator"><span>⌁</span> Calorie calculator</a>
+      </nav>
+      <div class="sidebar-tip">
+        <div class="tip-icon">✦</div>
+        <p class="tip-title">Small steps, big change.</p>
+        <p class="tip-copy">Build healthy habits one meal at a time.</p>
+      </div>
+      <div class="sidebar-bottom"><span class="online-dot"></span> Your wellness, in focus</div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">YOUR DAILY WELLNESS</p>
+          <h1>Good day! <span class="wave">✳</span></h1>
+          <p class="subheading">A little progress each day adds up.</p>
+        </div>
+        <div class="topbar-right">
+          <label class="date-chip" for="selected-date">▦ <input id="selected-date" type="date" aria-label="Select diary date"></label>
+          <div class="avatar" aria-hidden="true">N</div>
+        </div>
+      </header>
+
+      <section class="hero-grid">
+        <article class="card calorie-card">
+          <div class="card-heading">
+            <div><p class="eyebrow">DAILY CALORIES</p><h2>Your energy balance</h2></div>
+            <span class="pill pill-green"><span class="tiny-dot"></span> On your journey</span>
+          </div>
+          <div class="calorie-main">
+            <div class="ring" id="calorie-ring" role="img" aria-label="Calorie goal progress">
+              <div class="ring-inner">
+                <span class="ring-label">CONSUMED</span>
+                <strong id="consumed-calories">0</strong>
+                <span class="ring-unit">kcal</span>
+              </div>
+            </div>
+            <div class="balance">
+              <div class="balance-row"><span class="legend-dot green-dot"></span><div><span class="balance-label">Daily goal</span><strong id="goal-display">2,000 <small>kcal</small></strong></div></div>
+              <div class="balance-row"><span class="legend-dot pale-dot"></span><div><span class="balance-label">Remaining</span><strong id="remaining-calories">2,000 <small>kcal</small></strong></div></div>
+              <div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="calorie-progress"></div></div><span id="progress-caption">0% of daily goal</span></div>
+            </div>
+          </div>
+          <button class="primary-btn" id="hero-add-btn">＋ Log a meal</button>
+        </article>
+
+        <article class="card insight-card">
+          <div class="insight-top"><span class="sparkle">✦</span><span class="eyebrow">TODAY'S NUDGE</span></div>
+          <h2>Fuel your day<br>with intention.</h2>
+          <p id="daily-tip">Add your first meal to see your nutrition progress and a helpful daily tip.</p>
+          <div class="tip-decoration" aria-hidden="true"><span>✳</span><span>◌</span><span>✦</span></div>
+        </article>
+      </section>
+
+      <section class="macro-grid" id="nutrition">
+        <article class="card macro-card">
+          <div class="macro-top"><span class="macro-icon protein-icon">P</span><span class="macro-name">Protein</span><span class="macro-unit">g</span></div>
+          <div class="macro-value"><strong id="protein-value">0</strong><span>/ 100 g</span></div>
+          <div class="progress-track"><div class="progress-fill protein-fill" id="protein-progress"></div></div>
+          <p class="macro-foot">Supports muscle & recovery</p>
+        </article>
+        <article class="card macro-card">
+          <div class="macro-top"><span class="macro-icon carbs-icon">C</span><span class="macro-name">Carbs</span><span class="macro-unit">g</span></div>
+          <div class="macro-value"><strong id="carbs-value">0</strong><span>/ 250 g</span></div>
+          <div class="progress-track"><div class="progress-fill carbs-fill" id="carbs-progress"></div></div>
+          <p class="macro-foot">Your body's energy source</p>
+        </article>
+        <article class="card macro-card">
+          <div class="macro-top"><span class="macro-icon fats-icon">F</span><span class="macro-name">Fats</span><span class="macro-unit">g</span></div>
+          <div class="macro-value"><strong id="fats-value">0</strong><span>/ 65 g</span></div>
+          <div class="progress-track"><div class="progress-fill fats-fill" id="fats-progress"></div></div>
+          <p class="macro-foot">Helps absorb key nutrients</p>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="card food-card" id="food-log">
+          <div class="section-heading">
+            <div><p class="eyebrow">MEALS & SNACKS</p><h2>Food diary</h2></div>
+            <button class="secondary-btn" id="add-food-btn">＋ Add food</button>
+          </div>
+          <div class="meal-tabs" role="tablist" aria-label="Filter meals">
+            <button class="meal-tab active" data-filter="All">All meals <span id="all-count">0</span></button>
+            <button class="meal-tab" data-filter="Breakfast">Breakfast</button>
+            <button class="meal-tab" data-filter="Lunch">Lunch</button>
+            <button class="meal-tab" data-filter="Dinner">Dinner</button>
+            <button class="meal-tab" data-filter="Snack">Snacks</button>
+          </div>
+          <div id="food-list" class="food-list">
+            <div class="empty-state"><div class="empty-icon">♧</div><h3>Your diary starts here</h3><p>Log a meal to see your food and nutrition totals.</p><button class="text-btn" id="empty-add-btn">Add your first food →</button></div>
+          </div>
+          <div class="diary-footer"><span id="diary-summary">No foods logged yet</span><button class="text-btn" id="clear-day-btn">Clear day</button></div>
+        </article>
+
+        <article class="card calculator-card" id="calculator">
+          <div class="section-heading"><div><p class="eyebrow">PERSONALIZED ESTIMATE</p><h2>Calorie calculator</h2></div><span class="calculator-icon">⌁</span></div>
+          <p class="calculator-intro">Estimate your daily energy needs using your details.</p>
+          <form id="calculator-form">
+            <div class="form-row">
+              <label>Age <span class="field-unit">years</span><input type="number" id="age" min="18" max="100" value="25" required></label>
+              <label>Sex used for formula<select id="sex"><option value="female">Female</option><option value="male">Male</option></select></label>
+            </div>
+            <div class="form-row">
+              <label>Height <span class="field-unit">cm</span><input type="number" id="height" min="120" max="230" value="165" required></label>
+              <label>Weight <span class="field-unit">kg</span><input type="number" id="weight" min="30" max="300" value="60" required></label>
+            </div>
+            <label>Activity level
+              <select id="activity">
+                <option value="1.2">Mostly sitting / little exercise</option>
+                <option value="1.375">Light exercise 1–3 days/week</option>
+                <option value="1.55" selected>Moderate exercise 3–5 days/week</option>
+                <option value="1.725">Hard exercise 6–7 days/week</option>
+                <option value="1.9">Very intense activity</option>
+              </select>
+            </label>
+            <label>Your goal
+              <select id="goal-type"><option value="maintain">Maintain weight</option><option value="lose">Gradual weight loss</option><option value="gain">Gradual weight gain</option></select>
+            </label>
+            <button class="primary-btn full-btn" type="submit">Calculate my calories <span>→</span></button>
+          </form>
+          <div class="estimate-result" id="estimate-result" aria-live="polite">
+            <div><span class="eyebrow">ESTIMATED DAILY TARGET</span><strong id="estimated-target">2,000 <small>kcal/day</small></strong></div>
+            <button id="use-target-btn" class="use-target-btn">Use this goal</button>
+          </div>
+          <p class="disclaimer">Estimate only, not medical advice. Individual needs vary; consult a qualified professional for personalized guidance.</p>
+        </article>
+      </section>
+      <footer class="footer"><span>✳ nutriTrack</span><span>Made for mindful choices · Food values are estimates</span></footer>
+    </main>
+  </div>
+
+  <dialog id="food-dialog" class="food-dialog">
+    <form method="dialog" class="dialog-top"><div><p class="eyebrow">FOOD DIARY</p><h2>Add food</h2></div><button class="close-btn" value="cancel" aria-label="Close">×</button></form>
+    <form id="food-form" class="food-form">
+      <label>Search or choose a food
+        <input id="food-search" list="food-options" placeholder="Try idli, rice, banana..." autocomplete="off" required>
+        <datalist id="food-options"></datalist>
+      </label>
+      <div class="food-preview" id="food-preview"><span class="preview-emoji">🥗</span><div><strong>Select a food</strong><p>Nutrition estimate appears here</p></div></div>
+      <div class="form-row">
+        <label>Serving quantity<input id="quantity" type="number" min="0.25" max="20" step="0.25" value="1" required></label>
+        <label>Meal
+          <select id="meal-type"><option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Snack</option></select>
+        </label>
+      </div>
+      <p class="dialog-hint">Values are approximate per serving and can vary by recipe and portion size.</p>
+      <div class="dialog-actions"><button type="button" class="secondary-btn" id="cancel-food-btn">Cancel</button><button type="submit" class="primary-btn">Add to diary</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
